@@ -1,0 +1,23 @@
+.table--heroes {
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  width: 100%;
+  border: none;
+}
+
+.form--heroes__search {
+  display: grid;
+  margin-bottom: 3rem;
+}
+
+.form--heroes__search label {
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.5vh, 4rem);
+}
+
+@media screen and (min-width: 900px) {
+  .form--heroes__search {
+    max-width: 20%;
+    min-width: 400px;
+  }
+}

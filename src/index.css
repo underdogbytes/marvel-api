@@ -1,0 +1,72 @@
+body {
+  width: 100%;
+  margin: 0;
+
+  font-family: "PT Sans Caption", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: clamp(1rem, 1.5vh, 4rem);
+
+  background-color: #E5E5E5;
+  color: #555555;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+main {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 2vh, 4rem);
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+input, textarea {
+  padding: clamp(0.5rem, 1.5vh, 1rem) 1rem;
+
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+
+  color: #8E8E8E;
+}
+
+::placeholder{
+  color: #8E8E8E;
+  font-style: italic;
+  /* Firefox: */
+  opacity: 1;
+}
+
+/* Edge 12 - 18 */
+::-ms-input-placeholder {
+  font-style: italic;
+  color: #8E8E8E;
+}
+
+table {
+  width: 100%;
+  /* border-collapse: collapse; */
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+
+th {
+  text-align: left;
+  font-weight: 400;
+  color: #8E8E8E;
+}
+
+@media screen and (min-width: 1200px) {
+  main {
+    margin: 0 clamp(5rem, 8vh, 15rem);
+    padding: 2rem;
+  }
+}

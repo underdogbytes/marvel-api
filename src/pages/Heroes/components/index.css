@@ -1,0 +1,27 @@
+.table--heroes tbody tr {
+  box-shadow: 0px 0px 5px #00000033;
+  border-radius: 10px;
+}
+
+.table--heroes td {
+  padding: 1.5rem 0;
+  background-color: #ffffff;
+}
+
+.table--heroes__avatar {
+  height: clamp(48px, 2vh, 128px);
+  width: clamp(48px, 2vh, 128px);
+}
+
+.table--heroes__name {
+  font-weight: 800;
+  font-size: clamp(1.2rem, 2vh, 2rem);
+}
+
+.table--heroes td:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.table--heroes td:last-child {
+  border-radius: 0 10px 10px 0;
+}
