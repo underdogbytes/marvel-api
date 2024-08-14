@@ -2,7 +2,6 @@ import { Logo } from "../Logo";
 import "./index.css";
 
 export function Navbar() {
-
   return (
     <>
       <nav>
