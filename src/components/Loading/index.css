@@ -1,0 +1,14 @@
+.loading {
+  display: flex;
+  height: 90vh;
+}
+
+.loading div {
+  width: fit-content;
+  margin: auto;
+}
+
+.loading div > * {
+  margin: auto;
+  text-align: center;
+}
