@@ -12,7 +12,7 @@ function App() {
       case Routes.HOME:
         return <HeroesPage />;
       default:
-        return <ErrorPage />
+        return <ErrorPage />;
     }
   }
   return (
