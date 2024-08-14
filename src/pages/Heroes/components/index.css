@@ -12,6 +12,7 @@
 .table--heroes td:last-child {
   padding: 2rem;
 }
+
 .table--heroes__avatar {
   height: clamp(96px, 2vh, 128px);
   width: clamp(96px, 2vh, 128px);
@@ -29,9 +30,15 @@
 }
 
 .table--heroes td:first-child {
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
 }
 
 .table--heroes td:last-child {
   border-radius: 0 10px 10px 0;
+}
+
+@media screen and (min-width: 1200px) {
+  .table--heroes td:first-child {
+    border-radius: 10px 0 0 10px;
+  }
 }

@@ -6,10 +6,11 @@
   list-style: none;
   display: flex;
   margin: auto;
+  padding: 0;
 }
 
 .pagination li {
-  margin: 1rem;
+  margin: 0.4rem;
 }
 
 .pagination li button {
@@ -33,4 +34,10 @@
 
 .pagination li button:hover {
   opacity: 0.5;
+}
+
+@media screen and (min-width: 1200px) {
+  .pagination li {
+    margin: 1rem;
+  }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHeroesGetAll } from "../../api/heroes";
+import lupa from "../../assets/icons/lupa.png";
 import { Loading } from "../../components/Loading";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { RowHero } from "./components";
@@ -33,16 +34,20 @@ export function HeroesPage() {
             <header>
               <h1>Busca de personagens</h1>
 
-              <div className="form--heroes__search">
+              <form className="form--heroes__search">
                 <label>Nome do personagem</label>
-                <input
-                  type="text"
-                  placeholder="Buscar"
-                  value={nameFilter}
-                  onChange={(event) => setNameFilter(event.target.value)}
-                />
-                <button onClick={handleSearch}>Buscar</button>
-              </div>
+                <div className="form--heroes__search__input-btn">
+                  <input
+                    type="text"
+                    placeholder="Buscar"
+                    value={nameFilter}
+                    onChange={(event) => setNameFilter(event.target.value)}
+                  />
+                  <button onClick={handleSearch}>
+                    <img src={lupa} alt="Ícone de lupa" />
+                  </button>
+                </div>
+              </form>
             </header>
             <table className="table--heroes">
               <thead>

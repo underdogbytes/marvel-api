@@ -10,9 +10,34 @@
   margin-bottom: 3rem;
 }
 
+.form--heroes__search__input-btn {
+  width: 100%;
+  position: relative;
+  display: flex;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.form--heroes__search__input-btn input {
+  width: 100%;
+  border: none;
+}
+
 .form--heroes__search label {
   font-weight: 700;
   font-size: clamp(1.3rem, 1.5vh, 4rem);
+}
+
+.form--heroes__search button {
+  width: 1.8rem;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 10px;
+
+  background-color: transparent;
+  border: none;
 }
 
 .table--heroes tbody tr td:nth-child(1) div {
@@ -33,7 +58,8 @@
 }
 
 @media screen and (min-width: 900px) {
-  .form--heroes__search {
+  .form--heroes__search__input-btn {
+    width: fit-content;
     max-width: 20%;
     min-width: 400px;
   }
