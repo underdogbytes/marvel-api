@@ -4,18 +4,28 @@
 }
 
 .table--heroes td {
-  padding: 1.5rem 0;
+  padding: 2rem 0;
   background-color: #ffffff;
 }
 
+.table--heroes td:first-child, 
+.table--heroes td:last-child {
+  padding: 2rem;
+}
 .table--heroes__avatar {
-  height: clamp(48px, 2vh, 128px);
-  width: clamp(48px, 2vh, 128px);
+  height: clamp(96px, 2vh, 128px);
+  width: clamp(96px, 2vh, 128px);
 }
 
 .table--heroes__name {
   font-weight: 800;
   font-size: clamp(1.2rem, 2vh, 2rem);
+}
+
+.table--heroes__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .table--heroes td:first-child {

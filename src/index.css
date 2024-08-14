@@ -16,6 +16,10 @@ code {
     monospace;
 }
 
+img {
+  max-width: 100%;
+}
+
 main {
   min-height: 100vh;
   padding: 1rem;
@@ -53,7 +57,6 @@ input, textarea {
 
 table {
   width: 100%;
-  /* border-collapse: collapse; */
   border-collapse: separate;
   border-spacing: 0px;
 }

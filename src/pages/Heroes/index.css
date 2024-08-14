@@ -15,9 +15,34 @@
   font-size: clamp(1.3rem, 1.5vh, 4rem);
 }
 
+.table--heroes tbody tr td:nth-child(1) div {
+  width: fit-content;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table--heroes thead tr th:nth-child(3),
+.table--heroes thead tr th:nth-child(2),
+.table--heroes tbody tr td:nth-child(2),
+.table--heroes tbody tr td:nth-child(3)
+{
+  display: none;
+  margin: 0;
+}
+
 @media screen and (min-width: 900px) {
   .form--heroes__search {
     max-width: 20%;
     min-width: 400px;
+  }
+
+  .table--heroes thead tr th:nth-child(2),
+  .table--heroes thead tr th:nth-child(3),
+  .table--heroes tbody tr td:nth-child(1),
+  .table--heroes tbody tr td:nth-child(2),
+  .table--heroes tbody tr td:nth-child(3) {
+    display: table-cell;
   }
 }
