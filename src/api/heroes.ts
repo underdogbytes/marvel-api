@@ -3,7 +3,7 @@ import { useState } from "react";
 import { API } from "./base";
 
 const KEY = {
-  ALL: (timestamp: any, apikey: string, hash: string, offset: number) => `/characters?offset=${offset}&limit=10&ts=${timestamp}&apikey=${apikey}&hash=${hash}`
+  ALL: (timestamp: any, apikey: string, hash: string, offset: number, name?: string) => `/characters?offset=${offset}&limit=10&ts=${timestamp}&apikey=${apikey}&hash=${hash}${name ? `&name=${name}` : ''}`
 };
 
 interface Hero {
@@ -33,8 +33,8 @@ interface HeroesData {
 }
 
 class HeroesAPI extends API {
-  static async getAll(timestamp: any, apikey: string, hash: string, offset: number) {
-    const endpoint = KEY.ALL(timestamp, apikey, hash, offset);
+  static async getAll(timestamp: any, apikey: string, hash: string, offset: number, name?: string) {
+    const endpoint = KEY.ALL(timestamp, apikey, hash, offset, name);
     const { data } = await this.request<{ data: any }>(endpoint);
     return data;
   }
@@ -45,7 +45,7 @@ export function useHeroesGetAll() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  async function fetchHeroes(offset: number) {
+  async function fetchHeroes(offset: number, name?: string) {
     setLoading(true);
     setError(null);
     try {
@@ -56,7 +56,7 @@ export function useHeroesGetAll() {
       let toBeHashed = timestamp + privateKey + publicKey;
       let md55 = md5(toBeHashed);
 
-      const data = await HeroesAPI.getAll(timestamp, publicKey, md55, offset);
+      const data = await HeroesAPI.getAll(timestamp, publicKey, md55, offset, name);
       setHeroes(data);
     } catch (err) {
       setError(err as Error);

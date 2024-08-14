@@ -8,14 +8,20 @@ import "./index.css";
 export function HeroesPage() {
   const [offset, setOffset] = useState(0);
   const { heroes, loading, error, fetchHeroes } = useHeroesGetAll();
+  const [nameFilter, setNameFilter] = useState("");
 
   if (error) {
     alert(`Erro inesperado! Tente novamente mais tarde :(\n\n${error}`);
   }
 
   useEffect(() => {
-    fetchHeroes(offset);
-  }, [ offset]);
+    fetchHeroes(offset, nameFilter);
+  }, [offset]);
+  
+  const handleSearch = () => {
+    setOffset(0);
+    fetchHeroes(0, nameFilter);
+  };
 
   return (
     <>
@@ -29,7 +35,13 @@ export function HeroesPage() {
 
               <div className="form--heroes__search">
                 <label>Nome do personagem</label>
-                <input type="text" placeholder="Buscar" />
+                <input
+                  type="text"
+                  placeholder="Buscar"
+                  value={nameFilter}
+                  onChange={(event) => setNameFilter(event.target.value)}
+                />
+                <button onClick={handleSearch}>Buscar</button>
               </div>
             </header>
             <table className="table--heroes">
