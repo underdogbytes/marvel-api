@@ -25,6 +25,20 @@ main {
   padding: 1rem;
 }
 
+button {
+  border-radius: 4px;
+  border: none;
+  padding: 1rem 2rem;
+  background-color: #212121;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 h1 {
   font-size: clamp(2rem, 2vh, 4rem);
 }
