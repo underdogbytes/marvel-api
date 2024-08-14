@@ -1,53 +1,67 @@
+import { useEffect, useState } from "react";
+import { useHeroesGetAll } from "../../api/heroes";
+import { Loading } from "../../components/Loading";
+import { Pagination } from "../../components/Pagination/Pagination";
 import { RowHero } from "./components";
 import "./index.css";
 
 export function HeroesPage() {
-  const fakeData = [
-    {
-      imgSrc: 'teste',
-      name: 'Bruce Banner',
-      series: ['exemplo 1'],
-      events: ['exemplo 2'],
-    },
-    {
-      imgSrc: 'teste',
-      name: 'Bruce Banner',
-      series: ['exemplo 1'],
-      events: ['exemplo 2'],
-    }
-  ]
+  const [offset, setOffset] = useState(0);
+  const { heroes, loading, error, fetchHeroes } = useHeroesGetAll();
+
+  if (error) {
+    alert(`Erro inesperado! Tente novamente mais tarde :(\n\n${error}`);
+  }
+
+  useEffect(() => {
+    fetchHeroes(offset);
+  }, [ offset]);
+
   return (
     <>
-      <header>
-        <h1>Busca de personagens</h1>
+      {loading ? 
+        (<Loading status={loading} />)
+        :
+        (
+          <>
+            <header>
+              <h1>Busca de personagens</h1>
 
-        <div className="form--heroes__search">
-          <label>Nome do personagem</label>
-          <input type="text" placeholder="Buscar" />
-        </div>
-      </header>
-
-      <table className="table--heroes">
-        <thead>
-          <tr>
-            <th>Personagem</th>
-            <th>Séries</th>
-            <th>Eventos</th>
-          </tr>
-        </thead>
-        <tbody>
-          {fakeData.map((element, index) => (
-            <RowHero
-              key={index}
-              heroData={element}
-            />
-          ))}
-        </tbody>
-      </table>
-
-      <div>
-        paginação
-      </div>
+              <div className="form--heroes__search">
+                <label>Nome do personagem</label>
+                <input type="text" placeholder="Buscar" />
+              </div>
+            </header>
+            <table className="table--heroes">
+              <thead>
+                <tr>
+                  <th>Personagem</th>
+                  <th>Séries</th>
+                  <th>Eventos</th>
+                </tr>
+              </thead>
+              <tbody>
+                {heroes && heroes.results.length > 0 ? (
+                  heroes.results.map((element, index) => (
+                    <RowHero
+                      key={index}
+                      heroData={element}
+                    />
+                  ))
+                ) : <></>}
+              </tbody>
+            </table>
+            {heroes && heroes.results.length > 0 ? (
+              <Pagination
+                limit={heroes.limit}
+                total={heroes.total}
+                offset={offset}
+                setOffset={setOffset}
+              />
+            ) : <></>}
+          </>
+        )
+      }
     </>
   )
 }
