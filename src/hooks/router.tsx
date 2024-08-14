@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Routes } from "../routes/heroes";
 
 export const useRouter = () => {
-  const [route, setRoute] = useState<Routes>(Routes.HOME);
+  const [route, setRoute] = useState <string | Routes>(Routes.HOME);
 
-  const navigate = (newRoute: Routes) => {
+  const navigate = (newRoute: string | Routes) => {
     window.history.pushState({}, '', newRoute); // url
     setRoute(newRoute); // estado da rota
     window.location.reload();
@@ -15,7 +15,10 @@ export const useRouter = () => {
     const onPopState = () => {
       const path = window.location.pathname as Routes;
       // verificando se a rota existe:
-      if (Object.values(Routes).includes(path)) {
+      if (path.startsWith(`/${Routes.HERO}`)) {
+        setRoute(path);
+      }
+      else if (Object.values(Routes).includes(path)) {
         setRoute(path);
       } else {
         setRoute(Routes.ERROR);

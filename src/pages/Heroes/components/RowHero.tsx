@@ -1,38 +1,33 @@
+import { Hero } from "../../../interfaces/Hero";
 import "./index.css";
 
-interface HeroProps {
-  heroData: {
-    name: string,
-    series: {
-      items: { name: string }[];
-    },
-    events: {
-      items: { name: string }[];
-    },
-    thumbnail: {
-      extension: string,
-      path: string
-    };
-  }
+interface RowHeroProps {
+  heroData: Hero;
+  getModal?: (id: number) => void;
 }
 
-export function RowHero({ heroData }: HeroProps) {
-  const { thumbnail, name, series, events } = heroData;
+export function RowHero({ heroData, getModal }: RowHeroProps) {
+  const { id, thumbnail, name, series, events } = heroData;
+  const handleModal = () => {
+    if (getModal) {
+      getModal(id);
+    }
+  };
   return (
     <>
-      <tr>
+      <tr onClick={handleModal}>
         <td>
           <div>
             <img
               className="table--heroes__avatar"
-              src={`${thumbnail.path}.${thumbnail.extension}`}
+              src={`${thumbnail?.path}.${thumbnail?.extension}`}
               alt={`Foto de ${name}`}
             />
             <span className="table--heroes__name">{name}</span>
           </div>
         </td>
         <td>
-          {series.items.length > 0 ? (
+          {series?.items && series.items.length > 0 ? (
             <ul className="table--heroes__list">
               {series.items.map((item, index) => (
                 <li key={index}>{item.name}</li>
@@ -43,7 +38,7 @@ export function RowHero({ heroData }: HeroProps) {
           ) }
         </td>
         <td>
-          {events.items.length > 0 ? (
+          {events?.items && events.items.length > 0 ? (
             <ul className="table--heroes__list">
               {events.items.map((item, index) => (
                 <li key={index}>{item.name}</li>

@@ -4,12 +4,15 @@ import lupa from "../../assets/icons/lupa.png";
 import { Loading } from "../../components/Loading";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { RowHero } from "./components";
+import { Modal } from "./components/Modal";
 import "./index.css";
 
 export function HeroesPage() {
   const [offset, setOffset] = useState(0);
   const { heroes, loading, error, fetchHeroes } = useHeroesGetAll();
   const [nameFilter, setNameFilter] = useState("");
+  const [modal, setModal] = useState(false);
+  const [hero, setHero] = useState({});
 
   if (error) {
     alert(`Erro inesperado! Tente novamente mais tarde :(\n\n${error}`);
@@ -23,6 +26,17 @@ export function HeroesPage() {
     setOffset(0);
     fetchHeroes(0, nameFilter);
   };
+
+  const openModal = (id: number) => {
+    let hero = heroes?.results.filter((item) => item.id === id)
+    let hardCopy = Object.assign({}, hero);
+    setModal(true);
+    setHero(hardCopy[0])
+  }
+
+  const closeModal = () => {
+    setModal(false);
+  }
 
   return (
     <>
@@ -62,7 +76,8 @@ export function HeroesPage() {
                   heroes.results.map((element, index) => (
                     <RowHero
                       key={index}
-                      heroData={element}
+                      heroData={element as any}
+                      getModal={openModal}
                     />
                   ))
                 ) : <></>}
@@ -76,6 +91,8 @@ export function HeroesPage() {
                 setOffset={setOffset}
               />
             ) : <></>}
+
+            {modal ? <Modal hero={hero} changeStatus={closeModal} /> : <></>}
           </>
         )
       }
