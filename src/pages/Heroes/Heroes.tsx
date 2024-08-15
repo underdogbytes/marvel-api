@@ -57,9 +57,7 @@ export function HeroesPage() {
                     value={nameFilter}
                     onChange={(event) => setNameFilter(event.target.value)}
                   />
-                  <button onClick={handleSearch}>
-                    <img src={lupa} alt="Ícone de lupa" />
-                  </button>
+                  <button style={{ backgroundImage: `url(${lupa})`}} onClick={handleSearch}></button>
                 </div>
               </form>
             </header>

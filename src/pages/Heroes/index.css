@@ -36,8 +36,11 @@
   top: 0;
   right: 10px;
 
-  background-color: transparent;
   border: none;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: initial;
 }
 
 .table--heroes tbody tr td:nth-child(1) div {
