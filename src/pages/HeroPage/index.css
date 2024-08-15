@@ -1,0 +1,37 @@
+.hero__header {
+  height: 50rem;
+  display: flex;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero__header div {
+  width: 100%;
+  padding: 0.5rem 2rem;
+  margin-top: auto;
+  background-color: rgba(0, 0, 0, 0.592);
+  color: #fff;
+}
+
+.hero__header--sub {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  border-bottom: 1px solid black;
+  align-items: baseline;
+}
+
+.hero__header--sub h3 {
+  margin: 0 0 0.3rem 0;
+  padding: 0;
+}
+
+.hero__hqs {
+  list-style: none;
+  display: flex;
+}
+
+.hero__hqs img {
+  width: 8rem;
+}
