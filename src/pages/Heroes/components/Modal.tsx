@@ -33,6 +33,9 @@ export function Modal({ hero, changeStatus }: ModalProps) {
           </div>
         </div>
 
+        <p>
+          Agora que já sabe que sei criar um modal, que tal ver os quadrinhos deste personagem? :D
+        </p>
         <button
           onClick={goToCharacterPage}
           style={{ width: "100%", borderRadius: "0" }}>

@@ -17,8 +17,6 @@ export function HeroPage({ heroId }: HeroPageProps) {
     fetchComics(Number(heroId));
   }, []);
 
-  console.log("comics",comics)
-
   if (heroError) {
     return <div>Erro ao buscar o herói: {heroError.message}</div>;
   }

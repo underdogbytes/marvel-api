@@ -5,7 +5,7 @@ export function Navbar() {
   return (
     <>
       <nav>
-        <Logo />
+        <a href="/"><Logo /></a>
         
         {/* TODO: mobile toggle and improve code */}
         <div className="navbar__menu mobile">
@@ -32,13 +32,6 @@ export function Navbar() {
           <span className="nav__user-avatar">BL</span>
         </div>
       </nav>
-      
-      {/* TODO: pass some routes through the navbar rather than from App.tsx */}
-      {/* <nav>
-        <button onClick={() => navigate(Routes.HOME)}>Home</button>
-        <button onClick={() => navigate(Routes.ERROR)}>Erro</button>
-        <button onClick={() => window.history.back()}>Voltar</button>
-      </nav> */}
     </>
   )
 }
